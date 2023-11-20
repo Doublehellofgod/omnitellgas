@@ -56,18 +56,27 @@ app.controller('appeal', ['$scope','$http', function ($scope, $http){
         
         //define("OKTELL_WEBAPI_URL","http://webapi:!Qaz@Wsx12@ok.omnitell.ru/execsvcscriptplain?name=webapi_gas&async=0&timeout=10&startparam1=update_rec");
         console.log('puskd');
-        $.ajax({
-            method: 'get',             /* Метод запроса (post или get) */
-            url: "http://webapi:!Qaz@Wsx12@ok.omnitell.ru/execsvcscriptplain?name=webapi_gas"+
-            `&startparam1=${$('#org').val()}&startparam2=${$('#name').val()}&startparam3=79999999&async=0&timeout=10`,         /* Куда отправить запрос */
-            //url: "text.php",
-            //dataType: 'html',          /* Тип данных в ответе (xml, json, script, html). */
-            //data: {text: 'Текст'},     /* Данные передаваемые в массиве */
-            success: function(data){   /* функция которая будет выполнена после успешного запроса.  */
-            console.log(data);     
-            //alert('succsses'); /* В переменной data содержится ответ от index.php. */
-            }
-        });
+        // 1. Создаём новый XMLHttpRequest-объект
+        let xhr = new XMLHttpRequest();
+
+        // 2. Настраиваем его: GET-запрос по URL /article/.../load
+        xhr.open('GET', "http://webapi:!Qaz@Wsx12@ok.omnitell.ru/execsvcscriptplain?name=webapi_gas"+
+        `&startparam1=${$('#org').val()}&startparam2=${$('#name').val()}&startparam3=79999999&async=0&timeout=10`);
+
+        // 3. Отсылаем запрос
+        xhr.send();
+        // $.ajax({
+        //     method: 'get',             /* Метод запроса (post или get) */
+        //     url: "http://webapi:!Qaz@Wsx12@ok.omnitell.ru/execsvcscriptplain?name=webapi_gas"+
+        //     `&startparam1=${$('#org').val()}&startparam2=${$('#name').val()}&startparam3=79999999&async=0&timeout=10`,         /* Куда отправить запрос */
+        //     //url: "text.php",
+        //     //dataType: 'html',          /* Тип данных в ответе (xml, json, script, html). */
+        //     //data: {text: 'Текст'},     /* Данные передаваемые в массиве */
+        //     success: function(data){   /* функция которая будет выполнена после успешного запроса.  */
+        //     console.log(data);     
+        //     //alert('succsses'); /* В переменной data содержится ответ от index.php. */
+        //     }
+        // });
     }
 }])
 
